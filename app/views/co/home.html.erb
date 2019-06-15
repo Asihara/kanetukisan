@@ -1,0 +1,61 @@
+<center><h1><u><%= @zz %>の質問</u></h1></center><br>
+  <%= link_to "一覧画面へ" , "/ka"%>
+  <%= form_with model: @y, url: { action: "home" }, method: "get" , local: true do |form| %>
+      質問   質問者:<%= form.text_field :shitumonsya %>
+      質問文:<%= form.text_area :shitumonbun %>
+      項目:<%= form.select :koumoku , ["Day1","Day2","Day3","Day4"] , selected: @zz %>
+      <%= form.submit "投稿" %>
+  <% end %>
+
+<hr><hr>
+<% if @x != nil then %>
+
+    <% @x.reverse_each do |xx| %>
+      質問  <%= xx.shitumonsya %> : <%= xx.shitumonbun %>  <%= xx.nitiji %> : <%= xx.koumoku %><br>
+      <% if xx.nitiji1 == nil  ||  xx.nitiji1 == "" then %>
+      <!-- 返答が一つもないとき-->
+                      <!-- 入力できる表示-->
+                      <%= form_with model: xx, url: { action: "home" } , method: "get" ,local: true do |form| %>
+                            > 返答 返答者:<%= form.text_field :hentousya1 %>
+                                返答文:<%= form.text_area :hentoubun1 %>
+                                項目:<%= form.select :koumoku , ["Day1","Day2","Day3","Day4"] , selected: xx.koumoku %>
+                                <%= form.number_field :id , value: xx.id , readonly: true %>
+                                <%= form.submit "返答" %>
+                      <% end %>
+      <% else %>
+      <!-- 返答が一つはある時-->
+                      > 返答  <%= xx.hentousya1 %> : <%= xx.hentoubun1 %>  <%= xx.nitiji1 %><br>
+
+                      <% if xx.nitiji2 == nil ||  xx.nitiji2 == "" then %>
+                      <!-- 返答の2つ目がない-->
+                              <!-- 入力できる表示-->
+                              <%= form_with model: xx, url: { action: "home" }, method: "get",local: true do |form| %>
+                              >> 返答 返答者:<%= form.text_field :hentousya2 %>
+                                  返答文:<%= form.text_area :hentoubun2 %>
+                                  項目:<%= form.select :koumoku , ["Day1","Day2","Day3","Day4"] , selected: xx.koumoku %>
+                                  <%= form.number_field :id , value: xx.id , readonly: true %>
+                                  <%= form.submit "返答" %>
+                                  
+                              <% end %>
+
+                      <% else %>
+                      <!-- 返答の2つ目がある-->
+                                  >> 返答  <%= xx.hentousya2 %> : <%= xx.hentoubun2 %>  <%= xx.nitiji2 %><br>
+                                  <% if xx.nitiji3 == nil ||  xx.nitiji3 == "" then %>
+                                    <!-- 入力できる表示-->
+                                    <%= form_with model: xx, url: { action: "home" }, method: "get",local: true do |form| %>
+                                    >>> 返答 返答者:<%= form.text_field :hentousya3 %>
+                                        返答文:<%= form.text_area :hentoubun3 %>
+                                        項目:<%= form.select :koumoku , ["Day1","Day2","Day3","Day4"] , selected: xx.koumoku %>
+                                        <%= form.number_field :id , value: xx.id , readonly: true %>
+                                        <%= form.submit "返答" %>
+                                    <% end %>
+                                  <% else %>
+                                      >>> 返答  <%= xx.hentousya3 %> : <%= xx.hentoubun3 %>  <%= xx.nitiji3 %><br>
+                                  <% end %>
+                      <% end %>
+      <% end %>
+      <hr>
+    
+  <% end %>
+<% end %>

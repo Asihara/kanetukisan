@@ -1,0 +1,2 @@
+class Kasitumon < ApplicationRecord
+end

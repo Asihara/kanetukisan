@@ -1,0 +1,33 @@
+<center><h1><u>講義の質問</u></h1></center><br>
+<center><table>
+  <tr style="background-color:<%= cycle('#FFffFF' , '#FFff99') %>">
+    <td align="center" >更新日時</td>
+    <td align="center" >項目</td>
+    <td align="center" >内容</td>
+  </tr>
+  <tr style="background-color:<%= cycle('#FFffFF' , '#FFff99') %>">
+    <td align="center" ><%=  @y %></td>
+    <td align="center" >ALL_Day</td>
+    <td align="center" ><%= form_with model: @z, url: { action: "home" } , method: "get" ,local: true do |form| %><%= form.submit "ALL_Day" %><% end %></td>
+  </tr>
+  <tr style="background-color:<%= cycle('#FFffFF' , '#FFff99') %>">
+    <td align="center" ><%=  @y1 %></td>
+    <td align="center" >Day1</td>
+    <td align="center" ><%= form_with model: @z, url: { action: "home" } , method: "get" ,local: true do |form| %><%= form.submit "Day1" %><% end %></td>
+  </tr>
+  <tr style="background-color:<%= cycle('#FFffFF' , '#FFff99') %>">
+    <td align="center" ><%=  @y2 %></td>
+    <td align="center" >Day2</td>
+    <td align="center" ><%= form_with model: @z, url: { action: "home" } , method: "get",local: true do |form| %><%= form.submit "Day2" %><% end %></td>
+  </tr>
+  <tr style="background-color:<%= cycle('#FFffFF' , '#FFff99') %>">
+    <td align="center" ><%=  @y3 %></td>
+    <td align="center" >Day3</td>
+    <td align="center" ><%= form_with model: @z, url: { action: "home" } , method: "get",local: true do |form| %><%= form.submit "Day3" %><% end %></td>
+  </tr>
+  <tr style="background-color:<%= cycle('#FFffFF' , '#FFff99') %>">
+    <td align="center" ><%=  @y4 %></td>
+    <td align="center" >Day4</td>
+    <td align="center" ><%= form_with model: @z, url: { action: "home" } , method: "get",local: true do |form| %><%= form.submit "Day4" %><% end %></td>
+  </tr>
+</table></center>
